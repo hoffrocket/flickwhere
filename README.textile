@@ -8,6 +8,8 @@ h2. To get started
 
 h2. Get fancy with your build tool
 
+Run continuous compilation in one window and jetty with javarebel automatic class reloading in another.
+
 # download javarebel:http://www.zeroturnaround.com/scala-license/
 # create an _sbt-rebel_ script:
 	<pre><code>
