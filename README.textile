@@ -1,0 +1,19 @@
+h1. Flickr/geodata/map game built on Lift, the scala web framework
+
+h2. To get started
+
+# Install "sbt":http://code.google.com/p/simple-build-tool/
+# sbt update (first run only)
+# sbt jetty
+
+h2. Get fancy with your build tool
+
+# download javarebel:http://www.zeroturnaround.com/scala-license/
+# create an _sbt-rebel_ script:
+	<pre><code>
+#!/bin/sh
+java -XX:+CMSClassUnloadingEnabled -noverify -javaagent:/path/to/jrebel-2.1/jrebel.jar -Xmx512m -jar ~/bin/sbt-launcher.jar "$@
+	</code></pre>
+# open two terminal windows
+** Window 1: vanilla sbt, then "~prepare-webapp"
+** Window 2: sbt-rebel jetty
