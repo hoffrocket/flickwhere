@@ -14,6 +14,7 @@ class Boot {
   def boot {
     // where to search snippet
     LiftRules.addToPackages("flickwhere")
+    LiftRules.useXhtmlMimeType = false 
 
     // Build SiteMap
     val entries = Menu(Loc("Home", List("index"), "Home")) :: 

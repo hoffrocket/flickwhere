@@ -14,7 +14,7 @@ class UdorseLift(info: ProjectInfo) extends DefaultWebProject(info) {
   val jodaTime = "joda-time" % "joda-time" % "1.6"
   val jwebtest = "net.sourceforge.jwebunit" % "jwebunit-htmlunit-plugin" % "1.4.1" % "test->default"
   val st = "org.scala-tools.testing" % "scalatest" % "0.9.5" % "test->default"
-
+  val commonsIo = "commons-io" % "commons-io" % "1.3.2"
 
   override def scanDirectories = Nil
   

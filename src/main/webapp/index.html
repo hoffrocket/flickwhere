@@ -1,9 +1,66 @@
 <lift:surround with="default" at="content">
-	<h2>Woo!</h2>
+<head>
+	 <lift:HelloWorld.flickrScript/>
+	 <style type="text/css">  
+	 #map{  height: 400px;  width: 670px;  }  
+	 </style>
+</head>
+<div class="span-7">
+<lift:comet type="Flickr" name="Other">
+	<chat:body>
+		<div chat:photoId="foo">
+			<chat:photo/>
+		</div>
+		Hello <chat:name/>
+		<ul chat:id="na">
+			<chat:list>
+				<li><list:when/> <list:who/>: <i><list:msg/></i></li>
+			</chat:list>
+		</ul>
+	</chat:body>
+	<chat:input>
+		<chat:input/> <input type="submit" value="Post It" />
+	</chat:input>
+</lift:comet>
+</div>
+<div class="span-17 last" id="map"></div>  
+ 
+ <script type="text/javascript">
+//<![CDATA[
+	$(function(){
+		// Create a map object  
+		var map = new YMap(document.getElementById('map'));  
 
-	<lift:comet type="Clock" name="Other">
-		Current Time via comet: <clk:time>Missing Clock</clk:time> 
-	</lift:comet>
-  
-	<br/>
+		// Add map type control  
+		map.addTypeControl();  
+
+		// Add map zoom (long) control  
+		map.addZoomLong();  
+
+		// Add the Pan Control  
+		map.addPanControl();  
+
+		// Set map type to either of: YAHOO_MAP_SAT, YAHOO_MAP_HYB, YAHOO_MAP_REG  
+		map.setMapType(YAHOO_MAP_REG);  
+
+		// Display the map centered on a geocoded location  
+		map.drawZoomAndCenter("New York, NY", 16);
+		YEvent.Capture(map, EventsList.MouseClick, function(e, c){
+			var mapCoordCenter = map.convertLatLonXY(map.getCenterLatLon());
+			YLog.initPos(mapCoordCenter); //call initPos to set the starting location
+			currentGeoPoint = new YGeoPoint( c.Lat, c.Lon);
+			placeMarker(currentGeoPoint);
+		});
+		function placeMarker(geoPoint){
+			// Printing to the Logger
+			YLog.print("Adding marker at....");
+			YLog.print("\nLatitude:" + geoPoint.Lat + "\nLongitude:" + geoPoint.Lon);
+			var newMarker= new YMarker(geoPoint);
+			newMarker.addAutoExpand("<b>Here it is!</b>");
+			map.addOverlay(newMarker);
+		}
+	});
+//]]> 
+ </script>
+
 </lift:surround>
