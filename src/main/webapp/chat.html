@@ -1,0 +1,15 @@
+<lift:surround with="default" at="content">
+  <lift:comet type="Chat" name="Other">
+    <chat:body>
+Hello <chat:name/>
+  <ul chat:id="na">
+    <chat:list>
+      <li><list:when/> <list:who/>: <i><list:msg/></i></li>
+    </chat:list>
+  </ul>
+    </chat:body>
+    <chat:input>
+<chat:input/> <input type="submit" value="Post It" />
+    </chat:input>
+  </lift:comet>
+</lift:surround>
